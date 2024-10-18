@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Typography, Card, CardContent, CircularProgress, Button, Switch } from '@mui/material';
+import { Container, Typography, Card, CardContent, CircularProgress, Button, Switch, Select, MenuItem } from '@mui/material';
 import WeatherCard from './components/WeatherCard';
 import HourlyForecast from './components/HourlyForecast';
 import CitySelector from './components/CitySelector';
@@ -27,14 +27,19 @@ const App = () => {
             )
           )
         );
+    
         const weatherData = responses.map(response => response.data);
         setWeatherData(weatherData);
-
+    
         const avgTemp = weatherData.reduce((acc, city) => acc + city.main.temp, 0) / weatherData.length;
         setAverageTemp(avgTemp);
         setLoading(false);
       } catch (err) {
-        setError(err.message);
+        if (axios.isAxiosError(err)) {
+          setError(err.response ? `Error: ${err.response.data.message}` : 'Network error');
+        } else {
+          setError('An unexpected error occurred');
+        }
         setLoading(false);
       }
     };
@@ -43,7 +48,11 @@ const App = () => {
 
   const handleToggleUnits = () => setUnits(prev => (prev === 'metric' ? 'imperial' : 'metric'));
   const handleToggleDarkMode = () => setIsDarkMode(!isDarkMode);
-
+  const handleCityChange = (event) => {
+    const cityIndex = event.target.value;
+    setSelectedCity(weatherData[cityIndex]);
+  };
+  
   if (loading) return <CircularProgress />;
   if (error) return <p>Error: {error}</p>;
 
@@ -62,12 +71,30 @@ const App = () => {
       <CitySelector setUserCities={setUserCities} userCities={userCities} />
       <div className="weather-cards">
         {weatherData.map((cityData, index) => (
-          <WeatherCard 
-            key={index} 
-            cityData={cityData} 
-            units={units} 
-            onSelect={setSelectedCity} // Pass setSelectedCity as a prop
-          />
+          cityData.main ? (
+            <WeatherCard 
+              key={`${cityData.name}-${index}`} 
+              cityData={cityData} 
+              units={units} 
+              onSelect={setSelectedCity}
+            />
+          ) : (
+            <div key={`${userCities[index]}-${index}`}>
+              <Typography variant="body1">
+                Weather data for {userCities[index]} is unavailable. Please select a valid city:
+              </Typography>
+              <Select
+                value={index}
+                onChange={handleCityChange}
+                displayEmpty
+              >
+                <MenuItem value="" disabled>Select a city</MenuItem>
+                {userCities.map((city, idx) => (
+                  <MenuItem key={`${city}-${idx}`} value={idx}>{city}</MenuItem>
+                ))}
+              </Select>
+            </div>
+          )
         ))}
       </div>
       {averageTemp && (

@@ -9,13 +9,17 @@ const CitySelector = ({ setUserCities, userCities }) => {
   const [error, setError] = useState(null);
 
   const handleAddCity = () => {
-    const cityName = newCity.trim();
+    const cityName = newCity ? newCity.trim() : '';
     if (!cityName) {
       setError('Please enter a city name.');
       return;
     }
     if (userCities.map((city) => city.toLowerCase()).includes(cityName.toLowerCase())) {
       setError('City already added.');
+      return;
+    }
+    if (!citySuggestions.includes(cityName)) {
+      setError('Please select a city from the suggestions.');
       return;
     }
     setUserCities([...userCities, cityName]);
@@ -49,9 +53,9 @@ const CitySelector = ({ setUserCities, userCities }) => {
     <div className="city-selector">
       <Autocomplete
         value={newCity}
-        onChange={(event, newValue) => setNewCity(newValue)}
+        onChange={(event, newValue) => setNewCity(newValue || '')}
         onInputChange={(event, value) => {
-          setNewCity(value);
+          setNewCity(value || '');
           fetchCitySuggestions(value);
         }}
         options={citySuggestions}
@@ -59,7 +63,7 @@ const CitySelector = ({ setUserCities, userCities }) => {
           <TextField
             {...params}
             value={newCity}
-            onChange={(e) => setNewCity(e.target.value)}
+            onChange={(e) => setNewCity(e.target.value || '')}
             label="Add City"
             variant="outlined"
             InputProps={{
@@ -73,7 +77,6 @@ const CitySelector = ({ setUserCities, userCities }) => {
             }}
           />
         )}
-        freeSolo // Allows users to add cities not in the suggestions list
       />
       <Button variant="contained" onClick={handleAddCity} style={{ marginLeft: '10px' }}>
         Add
@@ -86,7 +89,7 @@ const CitySelector = ({ setUserCities, userCities }) => {
       <div className="city-chips">
         {userCities.map((city, index) => (
           <Chip
-            key={index}
+            key={`${city}-${index}`}
             label={city}
             onDelete={() => setUserCities(userCities.filter((c) => c !== city))}
             style={{ margin: '5px' }}

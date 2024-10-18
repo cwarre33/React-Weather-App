@@ -4,7 +4,7 @@ body, .root, .MuiTypography-root {
   font-family: 'Orbitron', sans-serif !important;
 }
 
-.MuiTypography-root .app-container{
+.MuiTypography-root .app-container {
   font-family: 'Rajdhani', sans-serif !important;
 }
 
@@ -21,6 +21,8 @@ body, .root, .MuiTypography-root {
   padding: 20px;
   background-color: #e0f7fa;
   color: #333;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .dark {
@@ -47,7 +49,8 @@ body, .root, .MuiTypography-root {
 }
 
 .weather-card {
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   background-color: #ffffff;
   border-radius: 12px;
   padding: 15px;
@@ -59,7 +62,7 @@ body, .root, .MuiTypography-root {
 
 .weather-card:hover {
   transform: scale(1.05);
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 16px rgba(255, 167, 38, 1);
 }
 
 .city-selector {
@@ -71,6 +74,7 @@ body, .root, .MuiTypography-root {
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   font-family: 'Rajdhani', sans-serif;
+  flex-wrap: wrap;
 }
 
 .city-chips {
@@ -126,3 +130,84 @@ body, .root, .MuiTypography-root {
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Mobile Support */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .weather-cards {
+    gap: 10px;
+  }
+
+  .weather-card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .city-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .city-chips {
+    justify-content: center;
+  }
+
+  .hourly-timeline {
+    gap: 5px;
+  }
+
+  .hourly-item {
+    min-width: 80px;
+    font-size: 12px;
+  }
+
+  .average-card {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 10px;
+  }
+}
+
+/* Additional Visual Enhancements */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+button, .MuiButton-root {
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover, .MuiButton-root:hover {
+  background-color: #0288d1;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input, .MuiInputBase-root {
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, .MuiInputBase-root:focus {
+  border-color: #0288d1;
+  box-shadow: 0px 0px 8px rgba(0, 136, 209, 0.2);
+}
+
+.weather-graph {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #e3f2fd;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Rajdhani', sans-serif;
+  height: 400px; /* Adjust height as needed */
+}
