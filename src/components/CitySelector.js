@@ -35,7 +35,7 @@ const CitySelector = ({ setUserCities, userCities }) => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       );
       const cities = response.data.map(
         (city) => `${city.name}, ${city.state ? city.state + ', ' : ''}${city.country}`

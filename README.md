@@ -1,6 +1,35 @@
-# Getting Started with Create React App
+# Weather Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a weather dashboard application built with React. It was created as a personal project to learn more about full stack development, software engineering principles, and modern web technologies. The application allows users to view weather information for multiple cities, including hourly forecasts and visualizations of temperature, humidity, and precipitation data.
+
+## Features
+
+- **City Selection**: Users can add cities to their dashboard by selecting from a dropdown menu with autocomplete suggestions.
+- **Weather Information**: Displays current weather information for selected cities, including temperature, humidity, and precipitation.
+- **Hourly Forecast**: Provides an hourly forecast for the selected city.
+- **Data Visualization**: Visualizes hourly temperature, humidity, and precipitation data using charts.
+- **Dark Mode**: Supports dark mode for better user experience in low-light environments.
+- **Responsive Design**: Optimized for mobile and desktop views.
+
+## Technologies Used
+
+- **React**: JavaScript library for building user interfaces.
+- **Material-UI**: React components for faster and easier web development.
+- **Chart.js**: JavaScript library for data visualization.
+- **React-Chartjs-2**: React wrapper for Chart.js.
+- **Axios**: Promise-based HTTP client for making API requests.
+- **GitHub Pages**: Hosting service for deploying the application.
+
+## Learning Goals
+
+This project was undertaken to achieve the following learning goals:
+
+- **Full Stack Development**: Gain hands-on experience with both front-end and back-end development.
+- **Software Engineering Principles**: Apply best practices in software design, coding standards, and project management.
+- **Modern Web Technologies**: Learn and implement modern web technologies such as React, Material-UI, and Chart.js.
+- **API Integration**: Understand how to integrate third-party APIs to fetch and display data dynamically.
+- **Responsive Design**: Create a responsive user interface that works seamlessly across different devices and screen sizes.
+- **Deployment**: Learn how to deploy a web application to GitHub Pages.
 
 ## Available Scripts
 
@@ -8,7 +37,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
@@ -27,44 +56,39 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm run deploy`
 
-### `npm run eject`
+Builds the app and deploys it to GitHub Pages. Ensure that the `homepage` field in `package.json` is set to the correct URL.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Deployment
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application is deployed to GitHub Pages. To deploy the latest version, run:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm run deploy
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Ensure your changes are committed and pushed to GitHub. Then, enable GitHub Pages in the repository settings by selecting the `gh-pages` branch as the source.
 
-## Learn More
+You can view the deployed application at: [https://cwarre33.github.io/React-Weather-App](https://cwarre33.github.io/React-Weather-App)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **src/components**: Contains the React components for the application, including `WeatherCard`, `HourlyForecast`, `CitySelector`, and `WeatherGraph`.
+- **src/App.js**: Main application file that integrates all components and handles state management.
+- **src/App.css**: Custom CSS for styling the application.
+- **public**: Contains the public assets and the `index.html` file.
 
-### Code Splitting
+## API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The application uses the OpenWeatherMap API to fetch weather data. Ensure you have a valid API key and set it in the environment variables.
 
-### Analyzing the Bundle Size
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Contributions are welcome! If you have any suggestions or improvements, feel free to create a pull request or open an issue.
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This project is licensed under the MIT License.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project was a great opportunity to deepen my understanding of full stack development and modern web technologies. I hope you find it useful and informative. Thank you for checking it out!
