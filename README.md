@@ -33,7 +33,7 @@ This project was undertaken to achieve the following learning goals:
 
 ## Design
 
-![Weather Dashboard Screenshot](images/React-Weather-App-Both-Views.jpg)
+![Weather Dashboard Screenshot](images/React-Weather-App-Both-Views.png)
 
 ## Available Scripts
 
