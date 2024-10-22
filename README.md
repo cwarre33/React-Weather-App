@@ -31,6 +31,10 @@ This project was undertaken to achieve the following learning goals:
 - **Responsive Design**: Create a responsive user interface that works seamlessly across different devices and screen sizes.
 - **Deployment**: Learn how to deploy a web application to GitHub Pages.
 
+## Design
+
+![Weather Dashboard Screenshot](images/React-Weather-App-Both-Views.jpg)
+
 ## Available Scripts
 
 In the project directory, you can run:
